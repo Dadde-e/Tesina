@@ -1,0 +1,143 @@
+/* --- RESET E BASI --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #050505;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* --- NAVIGAZIONE (Comune a tutte le pagine) --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+nav .logo { font-family: 'Playfair Display', serif; color: #d4af37; font-size: 1.8rem; font-weight: bold; }
+nav ul { display: flex; list-style: none; }
+nav ul li { margin-left: 25px; }
+nav ul li a { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+nav ul li a:hover { color: #d4af37; }
+
+/* --- SPECIFICO PER LA HOME (Body bloccato) --- */
+body.home-page {
+    overflow: hidden; /* Niente scorrimento solo in Home */
+    height: 100vh;
+}
+
+.sfondo-animato {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
+    z-index: -1;
+}
+
+.mappa-concettuale-wrapper {
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.titolo-centrale { text-align: center; z-index: 10; position: relative; padding: 20px; }
+.titolo-centrale h1 {
+    font-family: 'Playfair Display', serif; font-size: 4rem; color: #d4af37;
+    background: linear-gradient(145deg, #f3e09a 0%, #d4af37 50%, #8a6c11 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Nodi Mappa Home */
+.nodi-container { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+.nodo {
+    position: absolute; display: flex; justify-content: center; align-items: center;
+    text-decoration: none; color: #fff; font-weight: bold; text-transform: uppercase;
+    font-size: 0.75rem; border-radius: 50%; border: 2px solid #d4af37;
+    background: linear-gradient(145deg, #333 0%, #1a1a1a 100%);
+    transition: 0.4s; animation: floating 6s infinite ease-in-out;
+    width: 100px; height: 100px; text-align: center;
+}
+.nodo:hover { transform: scale(1.1); background: #d4af37; color: #000; box-shadow: 0 0 30px #d4af37; }
+
+/* Posizioni Nodi (Uguali a prima) */
+.n-musica { top: 15%; left: 25%; width: 120px; height: 120px; }
+.n-storia { top: 15%; left: 60%; width: 120px; height: 120px; }
+.n-scienze { top: 40%; left: 80%; width: 120px; height: 120px; }
+.n-tecnologia { top: 70%; left: 75%; }
+.n-arte { top: 75%; left: 45%; }
+.n-italiano { top: 70%; left: 15%; }
+.n-geografia { top: 45%; left: 5%; }
+.n-inglese { top: 25%; left: 10%; }
+.n-francese { top: 5%; left: 43%; }
+.n-religione { top: 55%; left: 25%; }
+.n-motorie { top: 40%; left: 65%; }
+
+@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+/* --- SPECIFICO PER PAGINE INTERNE (Musica, Storia, Scienze) --- */
+.content-page {
+    padding: 60px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.content-page h2 {
+    color: #d4af37; font-size: 2.5rem; margin-bottom: 30px;
+    font-family: 'Playfair Display', serif; border-bottom: 2px solid #333; padding-bottom: 10px;
+}
+
+/* Ritorno al Layout Split (Testo a SX, Video a DX) */
+.layout-split {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.testo-tesina { flex: 1.2; }
+.testo-tesina h3 { color: #d4af37; margin-bottom: 15px; }
+.testo-tesina p { margin-bottom: 20px; color: #ccc; font-size: 1.1rem; }
+
+/* Video Quadrato Corretto */
+.video-container { flex: 0.8; display: flex; justify-content: center; }
+video {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 3px solid #d4af37;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Storia Card */
+.storia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+.storia-card { background: #161b22; padding: 30px; border-radius: 15px; border: 1px solid #30363d; transition: 0.3s; }
+.storia-card:hover { border-color: #d4af37; transform: translateY(-10px); }
+.epoca { color: #d4af37; font-weight: bold; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 10px; }
+
+/* Scienze Onde */
+.wave-visualizer {
+    width: 100%; max-width: 450px; height: 350px;
+    background: #111; border: 2px solid #333; border-radius: 20px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+.wave { width: 80%; height: 6px; background: #d4af37; margin: 10px; border-radius: 10px; animation: pulse 2s infinite; }
+@keyframes pulse { 50% { transform: scaleX(1.1); opacity: 0.5; } }
+
+/* Responsive */
+@media (max-width: 850px) {
+    .layout-split { flex-direction: column; }
+    .video-container { width: 100%; }
+    .mappa-concettuale-wrapper { height: auto; padding: 50px 0; }
+    .nodi-container { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 20px; }
+    .nodo { position: relative !important; top: 0 !important; left: 0 !important; width: 100% !important; aspect-ratio: 1/1; }
+}
